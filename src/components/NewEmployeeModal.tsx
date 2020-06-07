@@ -42,6 +42,7 @@ export default function NewEmployeeModal(): ReactElement {
               className="w-100 d-block"
               required
               name="firstName"
+              value={newEmployeeData.firstName}
               onChange={(e) => dispatch(actions.editNewEmployeeData(e))}
             ></input>
           </Row>
@@ -53,6 +54,7 @@ export default function NewEmployeeModal(): ReactElement {
               className="w-100 d-block"
               required
               name="lastName"
+              value={newEmployeeData.lastName}
               onChange={(e) => dispatch(actions.editNewEmployeeData(e))}
             ></input>
           </Row>
@@ -64,6 +66,7 @@ export default function NewEmployeeModal(): ReactElement {
               className="w-100 d-block"
               required
               name="address"
+              value={newEmployeeData.address}
               onChange={(e) => dispatch(actions.editNewEmployeeData(e))}
             ></input>
           </Row>
@@ -76,6 +79,7 @@ export default function NewEmployeeModal(): ReactElement {
               required
               name="email"
               type="email"
+              value={newEmployeeData.email}
               onChange={(e) => dispatch(actions.editNewEmployeeData(e))}
             ></input>
           </Row>
@@ -87,6 +91,7 @@ export default function NewEmployeeModal(): ReactElement {
               className="w-100 d-block"
               required
               name="phoneNumber"
+              value={newEmployeeData.phoneNumber}
               onChange={(e) => dispatch(actions.editNewEmployeeData(e))}
             ></input>
           </Row>
@@ -99,6 +104,7 @@ export default function NewEmployeeModal(): ReactElement {
               required
               type="date"
               name="birthDate"
+              value={newEmployeeData.birthDate}
               onChange={(e) => dispatch(actions.editNewEmployeeData(e))}
             ></input>
           </Row>

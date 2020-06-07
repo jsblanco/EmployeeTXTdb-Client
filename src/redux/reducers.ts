@@ -1,25 +1,26 @@
 import * as constants from "./constants";
 import { PayloadAction, TypeGetter } from "react-redux-typescript";
-import * as int from "./../interfaces/interfaces"
+import * as int from "./../interfaces/interfaces";
 const initialState = {
   employeeList: [],
   error: "",
   showNewEmployeeModal: false,
-  newEmployeeData:{
-    errors:[]
-  }
+  newEmployeeData: {
+    errors: [],
+  },
 };
 
-export default (state = initialState, { type, payload }:any) => {
+export default (state = initialState, { type, payload }: any) => {
   switch (type) {
     case constants.GET_EMPLOYEES_REQUEST:
     case constants.ADD_EMPLOYEE_REQUEST:
     case constants.DELETE_EMPLOYEE_REQUEST:
     case constants.RESET_DATABASE_REQUEST:
       if (!!state.employeeList)
-        return { ...state, loading: true };
+        return { ...state, loading: true, showNewEmployeeModal: false };
       return {
         ...state,
+        showNewEmployeeModal: false,
       };
     case constants.GET_EMPLOYEES_SUCCESS:
     case constants.ADD_EMPLOYEE_SUCCESS:
@@ -27,8 +28,8 @@ export default (state = initialState, { type, payload }:any) => {
     case constants.RESET_DATABASE_SUCCESS:
       return {
         ...state,
-        newEmployeeData:{
-          errors:[]
+        newEmployeeData: {
+          errors: [],
         },
         employeeList: payload,
       };
@@ -41,27 +42,27 @@ export default (state = initialState, { type, payload }:any) => {
         error: payload,
       };
     case constants.TOGGLE_NEW_EMPLOYEE_MODAL:
-      return{
+      return {
         ...state,
-        showNewEmployeeModal: !state.showNewEmployeeModal
-      }
+        showNewEmployeeModal: !state.showNewEmployeeModal,
+      };
     case constants.EDIT_NEW_EMPLOYEE_DATA:
-      return{
+      return {
         ...state,
         newEmployeeData: {
           ...state.newEmployeeData,
-          errors:[],
+          errors: [],
           [payload.target.name]: payload.target.value.trim(),
-        }
-      }
+        },
+      };
     case constants.ADD_EMPLOYEE_FORMAT_IS_NOT_OK:
-      return{
+      return {
         ...state,
         newEmployeeData: {
           ...state.newEmployeeData,
-          errors:payload,
-        }
-      }
+          errors: payload,
+        },
+      };
     default:
       return state;
   }

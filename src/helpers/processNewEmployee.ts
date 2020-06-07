@@ -2,6 +2,7 @@ import * as int from "./../interfaces/interfaces";
 
 export const processNewEmployee = (newEmployee: int.Employee):Array<string> => {
   const errors = [];
+  console.log(newEmployee)
 
   if (
     typeof newEmployee.firstName !== "string" ||
@@ -15,10 +16,10 @@ export const processNewEmployee = (newEmployee: int.Employee):Array<string> => {
   ) {
     errors.push("Please input a valid last name, in the following format: Lastname");
   }
-  if (typeof newEmployee.address !== "string" || newEmployee.lastName) {
+  if (typeof newEmployee.address !== "string" || newEmployee.address.length==0) {
     errors.push("Please input a valid address");
   }
-  if (typeof newEmployee.phoneNumber !== "string" || newEmployee.phoneNumber) {
+  if (typeof newEmployee.phoneNumber !== "string" || newEmployee.phoneNumber.length==0) {
     errors.push("Please input a valid phone number, in the following format: 123-1234-1234");
   }
   if (typeof newEmployee.email !== "string" || newEmployee.email.length == 0) {

@@ -19,10 +19,11 @@ function* getEmployeeListEffect() {
 function* addEmployeeToDb(payload: any) {
   try {
     yield call(actions.addEmployeeRequest, payload);
-    const errors = processNewEmployee(payload);
+    const errors = processNewEmployee(payload.payload);
     if (errors.length>0){
     yield put(actions.addEmployeeFormatIsNotOk(errors))
     } else{
+      console.log("YAY!")
     const employees = yield call(api.addNewEmployee, payload.payload);
     yield put(actions.addEmployeeSuccess(employees))};
   } catch (e) {
