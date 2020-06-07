@@ -8,14 +8,21 @@ export interface Employee extends Object {
 }
 
 export interface EmployeeDbEntry extends Employee {
-id: number
+  id: number;
 }
 
 export interface EmployeeArr extends Array<Object> {
   [index: number]: Employee;
 }
 
+interface EventInt extends Object {
+  name: string,
+  value: string
+}
+
 export interface Payload {
   type?: string;
-  payload?: EmployeeArr | Error | Number |Employee |Boolean;
+  payload?: EmployeeArr | Error | Number | Employee | Boolean | EventInt;
 }
+
+

@@ -1,0 +1,33 @@
+import * as int from "./../interfaces/interfaces";
+
+export const processNewEmployee = (newEmployee: int.Employee):Array<string> => {
+  const errors = [];
+
+  if (
+    typeof newEmployee.firstName !== "string" ||
+    newEmployee.firstName.length == 0
+  ) {
+    errors.push("Please input a valid first name in the following format: Firstname");
+  }
+  if (
+    typeof newEmployee.lastName !== "string" ||
+    newEmployee.lastName.length == 0
+  ) {
+    errors.push("Please input a valid last name, in the following format: Lastname");
+  }
+  if (typeof newEmployee.address !== "string" || newEmployee.lastName) {
+    errors.push("Please input a valid address");
+  }
+  if (typeof newEmployee.phoneNumber !== "string" || newEmployee.phoneNumber) {
+    errors.push("Please input a valid phone number, in the following format: 123-1234-1234");
+  }
+  if (typeof newEmployee.email !== "string" || newEmployee.email.length == 0) {
+    errors.push("Please input a valid date");
+  }
+
+return errors;  
+
+};
+
+
+const namePattern = "[A-Z][a-z]{1,32}"

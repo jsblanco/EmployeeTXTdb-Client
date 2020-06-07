@@ -5,9 +5,12 @@ const initialState = {
   employeeList: [],
   error: "",
   showNewEmployeeModal: false,
+  newEmployeeData:{
+    errors:[]
+  }
 };
 
-export default (state = initialState, { type, payload }:int.Payload) => {
+export default (state = initialState, { type, payload }:any) => {
   switch (type) {
     case constants.GET_EMPLOYEES_REQUEST:
     case constants.ADD_EMPLOYEE_REQUEST:
@@ -24,6 +27,9 @@ export default (state = initialState, { type, payload }:int.Payload) => {
     case constants.RESET_DATABASE_SUCCESS:
       return {
         ...state,
+        newEmployeeData:{
+          errors:[]
+        },
         employeeList: payload,
       };
     case constants.GET_EMPLOYEES_FAILURE:
@@ -38,6 +44,23 @@ export default (state = initialState, { type, payload }:int.Payload) => {
       return{
         ...state,
         showNewEmployeeModal: !state.showNewEmployeeModal
+      }
+    case constants.EDIT_NEW_EMPLOYEE_DATA:
+      return{
+        ...state,
+        newEmployeeData: {
+          ...state.newEmployeeData,
+          errors:[],
+          [payload.target.name]: payload.target.value.trim(),
+        }
+      }
+    case constants.ADD_EMPLOYEE_FORMAT_IS_NOT_OK:
+      return{
+        ...state,
+        newEmployeeData: {
+          ...state.newEmployeeData,
+          errors:payload,
+        }
       }
     default:
       return state;

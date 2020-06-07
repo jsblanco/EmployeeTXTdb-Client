@@ -3,6 +3,7 @@ import * as constants from "./constants";
 import * as api from "../api/api-calls";
 import * as actions from "./actions";
 import * as int from "../interfaces/interfaces"
+import {processNewEmployee} from "./../helpers/processNewEmployee"
 
 function* getEmployeeListEffect() {
   try {
@@ -15,11 +16,15 @@ function* getEmployeeListEffect() {
   }
 }
 
-function* addEmployeeToDb(payload: int.Payload) {
+function* addEmployeeToDb(payload: any) {
   try {
     yield call(actions.addEmployeeRequest, payload);
+    const errors = processNewEmployee(payload);
+    if (errors.length>0){
+    yield put(actions.addEmployeeFormatIsNotOk(errors))
+    } else{
     const employees = yield call(api.addNewEmployee, payload.payload);
-    yield put(actions.addEmployeeSuccess(employees));
+    yield put(actions.addEmployeeSuccess(employees))};
   } catch (e) {
     yield put(actions.GetEmployeesFailure(e));
   }

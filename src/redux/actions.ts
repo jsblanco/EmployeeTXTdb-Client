@@ -25,6 +25,11 @@ export const addEmployeeSuccess = (payload: int.Payload) => ({
   payload,
 });
 
+export const addEmployeeFormatIsNotOk = (payload: Array<string>) => ({
+  type: constants.ADD_EMPLOYEE_FORMAT_IS_NOT_OK,
+  payload,
+});
+
 export const addEmployeeFailure = (payload: int.Payload) => ({
   type: constants.ADD_EMPLOYEE_FAILURE,
   payload,
@@ -56,6 +61,11 @@ export const resetDbSuccess = (payload: int.Payload) => ({
 
 export const resetDbFailure = (payload: int.Payload) => ({
   type: constants.RESET_DATABASE_SUCCESS,
+  payload,
+});
+
+export const editNewEmployeeData = (payload: any) => ({
+  type: constants.EDIT_NEW_EMPLOYEE_DATA,
   payload,
 });
 

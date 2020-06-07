@@ -16,8 +16,8 @@ export default function EmployeeCard({ employee }: Props): ReactElement {
   };
   return (
     <Row className="w-100 py-3 px-5 border rounded shadow mx-0 my-2 justify-content-center">
-      <Col lg="1" className="text-center">
-        {employee.id}-
+      <Col lg="1" className="text-center font-weight-bold">
+        {employee.id}
       </Col>
       <Col lg="2">
         <p>
