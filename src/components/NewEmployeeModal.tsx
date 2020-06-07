@@ -29,6 +29,7 @@ export default function NewEmployeeModal(): ReactElement {
         <Modal.Header>
           <Modal.Title>Add a new employee</Modal.Title>
           <FontAwesomeIcon
+            style={{cursor: "pointer"}}
             icon={faTimesCircle}
             size={"2x"}
             className="float-right text-secondary"

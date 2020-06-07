@@ -14,7 +14,7 @@ export default function Searchbar(): ReactElement {
         style={{width: "600px"}}
         className="p-1 mr-3 rounded border"
         name="searchCriteria"
-        placeholder="Search for employees..."
+        placeholder="Search for employees by any of their data..."
         onChange={(e) => dispatch(actions.editSearchCriteria(e.target.value))}
       />
     </>

@@ -5,6 +5,7 @@ const initialState = {
   employeeList: [],
   error: "",
   searchCriteria:"",
+  pageNumber:1,
   showNewEmployeeModal: false,
   newEmployeeData: {
     errors: [],
