@@ -24,7 +24,7 @@ function* addEmployeeToDb(payload: int.Payload) {
   }
 }
 
-function* removeEmployeeFromDb(payload: number) {
+function* removeEmployeeFromDb (payload: number) {
     try {
       yield call(actions.deleteEmployeeRequest, payload);
       const employees = yield call(api.deleteEmployee, payload);

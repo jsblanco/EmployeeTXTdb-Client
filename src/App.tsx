@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Button} from 'react-bootstrap';
+import { useDispatch, useSelector } from "react-redux";
+import EmployeeCard from './components/EmployeeCard';
+import * as int from "./interfaces/interfaces";
+import { getEmployeesRequest } from "./redux/actions";
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch();
+  const { employeeList, error, loading } = useSelector((state:any) => state);
+  const getEmployeesList=()=>{
+    dispatch(getEmployeesRequest)
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      <header className="junbotron">
+        <h1>Employee management suite</h1>
+
+        <Button 
+        variant="primary"
+        onClick={getEmployeesList}
+        >Fetch employees</Button>
+
       </header>
+      {!!employeeList && employeeList.map((employee: int.Employee)=> <EmployeeCard employee={employee}/>)}
     </div>
   );
 }
+
 
 export default App;
