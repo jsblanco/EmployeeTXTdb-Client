@@ -30,7 +30,7 @@ export const addEmployeeFailure = (payload: int.Payload) => ({
   payload,
 });
 
-export const deleteEmployeeRequest:any = (payload: int.Payload) => ({
+export const deleteEmployeeRequest = (payload: int.Payload | number) => ({
   type: constants.DELETE_EMPLOYEE_REQUEST,
   payload,
 });

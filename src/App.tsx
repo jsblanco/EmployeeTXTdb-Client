@@ -9,7 +9,7 @@ const App = () => {
   const dispatch = useDispatch();
   const { employeeList, error, loading } = useSelector((state:any) => state);
   const getEmployeesList=()=>{
-    dispatch(getEmployeesRequest)
+    dispatch(getEmployeesRequest())
   }
 
 
@@ -24,7 +24,7 @@ const App = () => {
         >Fetch employees</Button>
 
       </header>
-      {!!employeeList && employeeList.map((employee: int.Employee)=> <EmployeeCard employee={employee}/>)}
+      {!!employeeList && employeeList.map((employee: int.EmployeeDbEntry)=> <EmployeeCard key={employee.id} employee={employee}/>)}
     </div>
   );
 }

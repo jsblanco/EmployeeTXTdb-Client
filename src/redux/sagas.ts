@@ -8,6 +8,7 @@ function* getEmployeeListEffect() {
   try {
     yield call(actions.getEmployeesRequest);
     const employees = yield call(api.getEmployees);
+    console.log(employees);
     yield put(actions.GetEmployeesSuccess(employees));
   } catch (e) {
     yield put(actions.GetEmployeesFailure(e));
@@ -17,17 +18,17 @@ function* getEmployeeListEffect() {
 function* addEmployeeToDb(payload: int.Payload) {
   try {
     yield call(actions.addEmployeeRequest, payload);
-    const employees = yield call(api.addNewEmployee, payload);
+    const employees = yield call(api.addNewEmployee, payload.payload);
     yield put(actions.addEmployeeSuccess(employees));
   } catch (e) {
     yield put(actions.GetEmployeesFailure(e));
   }
 }
 
-function* removeEmployeeFromDb (payload: number) {
+function* removeEmployeeFromDb (payload: int.Payload) {
     try {
-      yield call(actions.deleteEmployeeRequest, payload);
-      const employees = yield call(api.deleteEmployee, payload);
+      yield call( actions.deleteEmployeeRequest, payload);
+      const employees = yield call(api.deleteEmployee, payload.payload);
       yield put(actions.deleteEmployeeSuccess(employees));
     } catch (e) {
       yield put(actions.deleteEmployeeFailure(e));

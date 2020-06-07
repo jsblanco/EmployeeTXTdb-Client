@@ -1,5 +1,4 @@
 export interface Employee extends Object {
-  id?: number;
   firstName: string;
   lastName: string;
   address: string;
@@ -8,11 +7,15 @@ export interface Employee extends Object {
   birthDate: string;
 }
 
+export interface EmployeeDbEntry extends Employee {
+id: number
+}
+
 export interface EmployeeArr extends Array<Object> {
   [index: number]: Employee;
 }
 
 export interface Payload {
-  type: string;
+  type?: string;
   payload?: EmployeeArr | Error | Number |Employee;
 }
