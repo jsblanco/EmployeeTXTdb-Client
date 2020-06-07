@@ -16,7 +16,7 @@ const App = () => {
 
   return (
     <div>
-      <header className="jumbotron mb-0 text-center w-100">
+      <header className="jumbotron mb-0 p-5 text-center w-100">
         <h1 className="mb-5 font-weight-bold">Employee management suite</h1>
         <Searchbar />
         <Button

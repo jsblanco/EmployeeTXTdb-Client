@@ -18,9 +18,11 @@ export default function Pagination(): ReactElement {
     isActivePage;
 
   if (employeeList.length > 0) {
-    let filteredEmployees = employeeList.filter(
-      (employee: int.EmployeeDbEntry) => {
-        if (
+    let filteredEmployees = employeeList.filter(function (
+      employee: int.EmployeeDbEntry
+    ) {
+      if (!!searchCriteria) {
+        return (
           employee.firstName.toLowerCase().includes(searchCriteria) ||
           employee.lastName.toLowerCase().includes(searchCriteria) ||
           employee.address.toLowerCase().includes(searchCriteria) ||
@@ -28,13 +30,11 @@ export default function Pagination(): ReactElement {
           employee.phoneNumber.toLowerCase().includes(searchCriteria) ||
           employee.birthDate.toLowerCase().includes(searchCriteria) ||
           employee.id === +searchCriteria
-        ) {
-          return employee;
-        } else if (!searchCriteria) {
-          return employee;
-        }
+        );
+      } else {
+        return employee;
       }
-    );
+    });
 
     indexOfLastEmployees = currentPage * employeesPerPage;
     indexOfFirstUser = indexOfLastEmployees - employeesPerPage;
@@ -54,7 +54,7 @@ export default function Pagination(): ReactElement {
     }
 
     renderPageNumbers = pageNumbers.map((number: number) => {
-      number == currentPage
+      number === currentPage
         ? (isActivePage = "bg-dark text-light font-weight-bold")
         : (isActivePage = "text-secondary");
       let userLi = (
