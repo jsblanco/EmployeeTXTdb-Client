@@ -23,7 +23,6 @@ function* addEmployeeToDb(payload: any) {
     if (errors.length>0){
     yield put(actions.addEmployeeFormatIsNotOk(errors))
     } else{
-      console.log("YAY!")
     const employees = yield call(api.addNewEmployee, payload.payload);
     yield put(actions.addEmployeeSuccess(employees))};
   } catch (e) {

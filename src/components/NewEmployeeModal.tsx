@@ -22,10 +22,12 @@ export default function NewEmployeeModal(): ReactElement {
 
   return (
     <>
-      <Button onClick={toggleModal}>Create new user</Button>
+      <Button 
+      className="mx-2"
+      onClick={toggleModal}>Add a new employee</Button>
       <Modal show={showNewEmployeeModal}>
         <Modal.Header>
-          <Modal.Title>Create new user</Modal.Title>
+          <Modal.Title>Add a new employee</Modal.Title>
           <FontAwesomeIcon
             icon={faTimesCircle}
             size={"2x"}
@@ -42,7 +44,7 @@ export default function NewEmployeeModal(): ReactElement {
               className="w-100 d-block"
               required
               name="firstName"
-              value={newEmployeeData.firstName}
+              value={newEmployeeData.firstName || ''}
               placeholder="John"
               onChange={(e) => dispatch(actions.editNewEmployeeData(e))}
             ></input>
@@ -55,7 +57,7 @@ export default function NewEmployeeModal(): ReactElement {
               className="w-100 d-block"
               required
               name="lastName"
-              value={newEmployeeData.lastName}
+              value={newEmployeeData.lastName || ''}
               placeholder="Jackson"
               onChange={(e) => dispatch(actions.editNewEmployeeData(e))}
             ></input>
@@ -68,7 +70,7 @@ export default function NewEmployeeModal(): ReactElement {
               className="w-100 d-block"
               required
               name="address"
-              value={newEmployeeData.address}
+              value={newEmployeeData.address || ''}
               placeholder="Fake street, 123"
               onChange={(e) => dispatch(actions.editNewEmployeeData(e))}
             ></input>
@@ -82,7 +84,7 @@ export default function NewEmployeeModal(): ReactElement {
               required
               name="email"
               type="email"
-              value={newEmployeeData.email}
+              value={newEmployeeData.email || ''}
               placeholder="john@jackson.com"
               onChange={(e) => dispatch(actions.editNewEmployeeData(e))}
             ></input>
@@ -95,7 +97,7 @@ export default function NewEmployeeModal(): ReactElement {
               className="w-100 d-block"
               required
               name="phoneNumber"
-              value={newEmployeeData.phoneNumber}
+              value={newEmployeeData.phoneNumber || ''}
               placeholder="123-123-1234"
               onChange={(e) => dispatch(actions.editNewEmployeeData(e))}
             ></input>
@@ -109,7 +111,7 @@ export default function NewEmployeeModal(): ReactElement {
               required
               type="date"
               name="birthDate"
-              value={newEmployeeData.birthDate}
+              value={newEmployeeData.birthDate || ''}
               onChange={(e) => dispatch(actions.editNewEmployeeData(e))}
             ></input>
           </Row>

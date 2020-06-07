@@ -4,6 +4,7 @@ import * as int from "./../interfaces/interfaces";
 const initialState = {
   employeeList: [],
   error: "",
+  searchCriteria:"",
   showNewEmployeeModal: false,
   newEmployeeData: {
     errors: [],
@@ -54,6 +55,11 @@ export default (state = initialState, { type, payload }: any) => {
           [payload.target.name]: payload.target.value.trim(),
         },
       };
+    case constants.EDIT_SEARCH_CRITERIA:
+      return {
+        ...state,
+        searchCriteria: payload.toLowerCase()
+      }
     case constants.ADD_EMPLOYEE_FORMAT_IS_NOT_OK:
       return {
         ...state,

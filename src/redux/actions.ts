@@ -69,6 +69,11 @@ export const editNewEmployeeData = (payload: any) => ({
   payload,
 });
 
+export const editSearchCriteria = (payload: any) => ({
+  type: constants.EDIT_SEARCH_CRITERIA,
+  payload,
+});
+
 export const toggleNewEmployeeModal = () => ({
   type: constants.TOGGLE_NEW_EMPLOYEE_MODAL,
 });
