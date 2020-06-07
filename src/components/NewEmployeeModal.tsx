@@ -43,6 +43,7 @@ export default function NewEmployeeModal(): ReactElement {
               required
               name="firstName"
               value={newEmployeeData.firstName}
+              placeholder="John"
               onChange={(e) => dispatch(actions.editNewEmployeeData(e))}
             ></input>
           </Row>
@@ -55,6 +56,7 @@ export default function NewEmployeeModal(): ReactElement {
               required
               name="lastName"
               value={newEmployeeData.lastName}
+              placeholder="Jackson"
               onChange={(e) => dispatch(actions.editNewEmployeeData(e))}
             ></input>
           </Row>
@@ -67,6 +69,7 @@ export default function NewEmployeeModal(): ReactElement {
               required
               name="address"
               value={newEmployeeData.address}
+              placeholder="Fake street, 123"
               onChange={(e) => dispatch(actions.editNewEmployeeData(e))}
             ></input>
           </Row>
@@ -80,6 +83,7 @@ export default function NewEmployeeModal(): ReactElement {
               name="email"
               type="email"
               value={newEmployeeData.email}
+              placeholder="john@jackson.com"
               onChange={(e) => dispatch(actions.editNewEmployeeData(e))}
             ></input>
           </Row>
@@ -92,6 +96,7 @@ export default function NewEmployeeModal(): ReactElement {
               required
               name="phoneNumber"
               value={newEmployeeData.phoneNumber}
+              placeholder="123-123-1234"
               onChange={(e) => dispatch(actions.editNewEmployeeData(e))}
             ></input>
           </Row>
@@ -115,7 +120,7 @@ export default function NewEmployeeModal(): ReactElement {
 
           {
             newEmployeeData.errors.map((error: string) => (
-              <p className="badge py-2 px-3 bg-danger w-100 text-light">{error}</p>
+              <p className="badge py-2 px-3 my-0 text-danger">{error}</p>
             ))}
         </Modal.Body>
       </Modal>

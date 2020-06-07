@@ -20,7 +20,6 @@ export default (state = initialState, { type, payload }: any) => {
         return { ...state, loading: true, showNewEmployeeModal: false };
       return {
         ...state,
-        showNewEmployeeModal: false,
       };
     case constants.GET_EMPLOYEES_SUCCESS:
     case constants.ADD_EMPLOYEE_SUCCESS:
@@ -58,6 +57,7 @@ export default (state = initialState, { type, payload }: any) => {
     case constants.ADD_EMPLOYEE_FORMAT_IS_NOT_OK:
       return {
         ...state,
+        showNewEmployeeModal: true,
         newEmployeeData: {
           ...state.newEmployeeData,
           errors: payload,
