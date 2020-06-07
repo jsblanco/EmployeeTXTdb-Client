@@ -4,7 +4,6 @@ export const processNewEmployee = (
   newEmployee: int.Employee
 ): Array<string> => {
   const errors = [];
-  console.log(newEmployee);
 
   if (
     typeof newEmployee.firstName !== "string" ||

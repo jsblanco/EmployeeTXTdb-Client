@@ -1,13 +1,14 @@
 import React, { ReactElement, useState } from "react";
 import { useSelector } from "react-redux";
 import * as int from "../interfaces/interfaces";
+import EmployeeHeader from "./EmployeeHeader";
 import EmployeeCard from "./EmployeeCard";
 
 export default function Pagination(): ReactElement {
   const { employeeList, searchCriteria } = useSelector((state: any) => state);
   const [currentPage, setCurrentPage] = useState(1);
   const employeesPerPage = 7;
-  const paginationThreshold = 3;
+  const paginationThreshold = 4;
 
   let indexOfFirstUser,
     indexOfLastEmployees,
@@ -98,6 +99,7 @@ export default function Pagination(): ReactElement {
     <>
       {!!employeeList && (
         <>
+          <EmployeeHeader />
           <div className="h-75 overflow-auto">{renderEmployees}</div>
         </>
       )}

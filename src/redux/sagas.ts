@@ -9,7 +9,6 @@ function* getEmployeeListEffect() {
   try {
     yield call(actions.getEmployeesRequest);
     const employees = yield call(api.getEmployees);
-    console.log(employees);
     yield put(actions.GetEmployeesSuccess(employees));
   } catch (e) {
     yield put(actions.GetEmployeesFailure(e));

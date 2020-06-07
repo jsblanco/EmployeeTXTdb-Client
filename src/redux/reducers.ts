@@ -1,11 +1,8 @@
 import * as constants from "./constants";
-import { PayloadAction, TypeGetter } from "react-redux-typescript";
-import * as int from "./../interfaces/interfaces";
 const initialState = {
   employeeList: [],
   error: "",
-  searchCriteria:"",
-  pageNumber:1,
+  searchCriteria: "",
   showNewEmployeeModal: false,
   newEmployeeData: {
     errors: [],
@@ -19,9 +16,15 @@ export default (state = initialState, { type, payload }: any) => {
     case constants.DELETE_EMPLOYEE_REQUEST:
     case constants.RESET_DATABASE_REQUEST:
       if (!!state.employeeList)
-        return { ...state, loading: true, showNewEmployeeModal: false };
+        return {
+          ...state,
+          error: "",
+          loading: true,
+          showNewEmployeeModal: false,
+        };
       return {
         ...state,
+        error: "",
       };
     case constants.GET_EMPLOYEES_SUCCESS:
     case constants.ADD_EMPLOYEE_SUCCESS:
@@ -59,8 +62,8 @@ export default (state = initialState, { type, payload }: any) => {
     case constants.EDIT_SEARCH_CRITERIA:
       return {
         ...state,
-        searchCriteria: payload.toLowerCase()
-      }
+        searchCriteria: payload.toLowerCase(),
+      };
     case constants.ADD_EMPLOYEE_FORMAT_IS_NOT_OK:
       return {
         ...state,

@@ -11,11 +11,10 @@ interface Props {
 export default function EmployeeCard({ employee }: Props): ReactElement {
   const dispatch = useDispatch();
   const deleteEmployee = () => {
-    console.log(employee.id);
     dispatch(deleteEmployeeRequest(employee.id));
   };
   return (
-    <Row className="w-100 py-3 px-5 border rounded shadow mx-0 my-2 justify-content-center">
+    <Row className="w-100 py-3 px-5 border rounded shadow mx-0 mb-3 justify-content-center">
       <Col lg="1" className="text-center font-weight-bold">
         {employee.id}
       </Col>

@@ -1,24 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import EmployeeCard from "./components/EmployeeCard";
-import * as int from "./interfaces/interfaces";
 import * as actions from "./redux/actions";
-import EmployeeHeader from "./components/EmployeeHeader";
 import NewEmployeeModal from "./components/NewEmployeeModal";
 import Searchbar from "./components/Searchbar";
 import Pagination from "./components/Pagination";
+import ErrorMessage from "./components/ErrorMessage";
 
 const App = () => {
   const dispatch = useDispatch();
-  const {
-    employeeList,
-    searchCriteria,
-    currentPage,
-    error,
-    loading,
-  } = useSelector((state: any) => state);
-
+  const { error } = useSelector((state: any) => state);
   useEffect(() => {
     dispatch(actions.getEmployeesRequest());
   }, []);
@@ -44,8 +35,10 @@ const App = () => {
           Reset database entries
         </Button>
       </header>
-      <EmployeeHeader />
-      <Pagination />
+      {!!error
+      ?<ErrorMessage/>
+      :<Pagination />
+      }
     </div>
   );
 };
