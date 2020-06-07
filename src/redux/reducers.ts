@@ -4,6 +4,7 @@ import * as int from "./../interfaces/interfaces"
 const initialState = {
   employeeList: [],
   error: "",
+  showNewEmployeeModal: false,
 };
 
 export default (state = initialState, { type, payload }:int.Payload) => {
@@ -13,7 +14,7 @@ export default (state = initialState, { type, payload }:int.Payload) => {
     case constants.DELETE_EMPLOYEE_REQUEST:
     case constants.RESET_DATABASE_REQUEST:
       if (!!state.employeeList)
-        return { ...state, employeeList: [], error: "", loading: true };
+        return { ...state, loading: true };
       return {
         ...state,
       };
@@ -33,6 +34,11 @@ export default (state = initialState, { type, payload }:int.Payload) => {
         ...state,
         error: payload,
       };
+    case constants.TOGGLE_NEW_EMPLOYEE_MODAL:
+      return{
+        ...state,
+        showNewEmployeeModal: !state.showNewEmployeeModal
+      }
     default:
       return state;
   }

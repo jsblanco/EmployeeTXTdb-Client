@@ -17,5 +17,5 @@ export interface EmployeeArr extends Array<Object> {
 
 export interface Payload {
   type?: string;
-  payload?: EmployeeArr | Error | Number |Employee;
+  payload?: EmployeeArr | Error | Number |Employee |Boolean;
 }

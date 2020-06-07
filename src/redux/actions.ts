@@ -58,3 +58,7 @@ export const resetDbFailure = (payload: int.Payload) => ({
   type: constants.RESET_DATABASE_SUCCESS,
   payload,
 });
+
+export const toggleNewEmployeeModal = () => ({
+  type: constants.TOGGLE_NEW_EMPLOYEE_MODAL,
+});
