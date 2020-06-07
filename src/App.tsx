@@ -3,7 +3,7 @@ import {Button} from 'react-bootstrap';
 import { useDispatch, useSelector } from "react-redux";
 import EmployeeCard from './components/EmployeeCard';
 import * as int from "./interfaces/interfaces";
-import { getEmployeesRequest } from "./redux/actions";
+import { getEmployeesRequest, resetDbRequest } from "./redux/actions";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -19,9 +19,13 @@ const App = () => {
         <h1>Employee management suite</h1>
 
         <Button 
-        variant="primary"
+        variant="success"
         onClick={getEmployeesList}
         >Fetch employees</Button>
+        <Button 
+        variant="primary"
+        onClick={()=>dispatch(resetDbRequest())}
+        >Reset employee DB</Button>
 
       </header>
       {!!employeeList && employeeList.map((employee: int.EmployeeDbEntry)=> <EmployeeCard key={employee.id} employee={employee}/>)}
